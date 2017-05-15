@@ -6,7 +6,7 @@ private:
 	double y_coord;
 public:
 	point(double _x_coord, double _y_coord);
-	double get_x_coord();
-	double get_y_coord();
+	double get_x_coord() const;
+	double get_y_coord() const;
 	~point();
 };

@@ -147,12 +147,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\bentley-ottmann.cpp" />
+    <ClCompile Include="src\event.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\point.cpp" />
     <ClCompile Include="src\segment.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\bentley-ottmann.h" />
+    <ClInclude Include="src\event.h" />
     <ClInclude Include="src\point.h" />
     <ClInclude Include="src\segment.h" />
   </ItemGroup>

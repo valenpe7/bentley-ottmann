@@ -12,6 +12,6 @@ private:
 public:
 	segment(point p_1, point p_2);
 	std::pair<point, point> get_endpoints();
-	std::array<double, 4> get_limits();
+	//std::array<double, 4> get_limits();
 	~segment();
 };
