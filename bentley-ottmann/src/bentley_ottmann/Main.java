@@ -22,7 +22,7 @@ public class Main {
 
         BentleyOttmann test = new BentleyOttmann(data);
         test.find_intersections();
-        test.print_intersections();
+        //test.print_intersections();
         ArrayList<Point> intersections = test.get_intersections();
 
         new GUI(data, intersections);

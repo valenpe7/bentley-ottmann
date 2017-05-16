@@ -13,7 +13,7 @@ public class Segment {
     Segment(Point p_1, Point p_2) {
         this.p_1 = p_1;
         this.p_2 = p_2;
-        this.set_value(this.first().get_x_coord());
+        this.calculate_value(this.first().get_x_coord());
     }
 
     public Point first() {
@@ -32,12 +32,16 @@ public class Segment {
         }
     }
 
-    public void set_value(double value) {
+    public void calculate_value(double value) {
         double x1 = this.first().get_x_coord();
         double x2 = this.second().get_x_coord();
         double y1 = this.first().get_y_coord();
         double y2 = this.second().get_y_coord();
         this.value = y1 + (((y2 - y1) / (x2 - x1)) * (value - x1));
+    }
+
+    public void set_value(double value) {
+        this.value = value;
     }
 
     public double get_value() {

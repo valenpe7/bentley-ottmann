@@ -31,26 +31,26 @@ public class BentleyOttmann {
                 for(Segment s : e.get_segments()) {
                     this.recalculate(L);
                     this.T.add(s);
-                    if(!this.T.headSet(s, false).isEmpty()) {
-                        Segment r = this.T.headSet(s, false).last();
+                    if(this.T.lower(s) != null) {
+                        Segment r = this.T.lower(s);
                         this.report_intersection(r, s, L);
                     }
-                    if(!this.T.tailSet(s, false).isEmpty()) {
-                        Segment t = this.T.tailSet(s, false).first();
+                    if(this.T.higher(s) != null) {
+                        Segment t = this.T.higher(s);
                         this.report_intersection(t, s, L);
                     }
-                    if(!this.T.headSet(s, false).isEmpty() && !this.T.tailSet(s, false).isEmpty()) {
-                        Segment r = this.T.headSet(s, false).last();
-                        Segment t = this.T.tailSet(s, false).first();
+                    if(this.T.lower(s) != null && this.T.higher(s) != null) {
+                        Segment r = this.T.lower(s);
+                        Segment t = this.T.higher(s);
                         this.remove_future(r, t);
                     }
                 }
                 break;
             case 1:
                 for(Segment s : e.get_segments()) {
-                    if(!this.T.headSet(s, false).isEmpty() && !this.T.tailSet(s, false).isEmpty()) {
-                        Segment r = this.T.headSet(s, false).last();
-                        Segment t = this.T.tailSet(s, false).first();
+                    if(this.T.lower(s) != null && this.T.higher(s) != null) {
+                        Segment r = this.T.lower(s);
+                        Segment t = this.T.higher(s);
                         this.report_intersection(r, t, L);
                     }
                     this.T.remove(s);
@@ -59,34 +59,28 @@ public class BentleyOttmann {
             case 2:
                 Segment s_1 = e.get_segments().get(0);
                 Segment s_2 = e.get_segments().get(1);
-                this.T.remove(s_1);
-                this.T.remove(s_2);
-                s_1.set_value(L + 0.001);
-                s_2.set_value(L + 0.001);
-                this.recalculate(L + 0.001);
-                this.T.add(s_1);
-                this.T.add(s_2);
+                this.swap(s_1, s_2);
                 if(s_1.get_value() < s_2.get_value()) {
-                    if(!this.T.tailSet(s_1, false).isEmpty()) {
-                        Segment t = this.T.tailSet(s_1, false).first();
-                        this.remove_future(t, s_2);
+                    if(this.T.higher(s_1) != null) {
+                        Segment t = this.T.higher(s_1);
                         this.report_intersection(t, s_1, L);
+                        this.remove_future(t, s_2);
                     }
-                    if(!this.T.headSet(s_2, false).isEmpty()) {
-                        Segment r = this.T.headSet(s_2, false).last();
-                        this.remove_future(r, s_1);
+                    if(this.T.lower(s_2) != null) {
+                        Segment r = this.T.lower(s_2);
                         this.report_intersection(r, s_2, L);
+                        this.remove_future(r, s_1);
                     }
                 } else {
-                    if(!this.T.tailSet(s_2, false).isEmpty()) {
-                        Segment t = this.T.tailSet(s_2, false).first();
-                        this.remove_future(t, s_1);
+                    if(this.T.higher(s_2) != null) {
+                        Segment t = this.T.higher(s_2);
                         this.report_intersection(t, s_2, L);
+                        this.remove_future(t, s_1);
                     }
-                    if(!this.T.headSet(s_1, false).isEmpty()) {
-                        Segment r = this.T.headSet(s_1, false).last();
-                        this.remove_future(r, s_2);
+                    if(this.T.lower(s_1) != null) {
+                        Segment r = this.T.lower(s_1);
                         this.report_intersection(r, s_1, L);
+                        this.remove_future(r, s_2);
                     }
                 }
                 this.X.add(e.get_point());
@@ -132,12 +126,22 @@ public class BentleyOttmann {
         return false;
     }
 
+    private void swap(Segment s_1, Segment s_2) {
+        this.T.remove(s_1);
+        this.T.remove(s_2);
+        double value = s_1.get_value();
+        s_1.set_value(s_2.get_value());
+        s_2.set_value(value);
+        this.T.add(s_1);
+        this.T.add(s_2);
+    }
+
     private void recalculate(double L) {
         LinkedList<Segment> tmp = new LinkedList<>();
         Iterator<Segment> iter = this.T.iterator();
         while(iter.hasNext()) {
             Segment s = iter.next();
-            s.set_value(L);
+            s.calculate_value(L);
             tmp.add(s);
             iter.remove();
         }
