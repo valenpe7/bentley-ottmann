@@ -1,8 +1,6 @@
 package bentley_ottmann;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by valen_000 on 14. 5. 2017.

@@ -137,16 +137,9 @@ public class BentleyOttmann {
     }
 
     private void recalculate(double L) {
-        LinkedList<Segment> tmp = new LinkedList<>();
         Iterator<Segment> iter = this.T.iterator();
         while(iter.hasNext()) {
-            Segment s = iter.next();
-            s.calculate_value(L);
-            tmp.add(s);
-            iter.remove();
-        }
-        while(!tmp.isEmpty()) {
-            this.T.add(tmp.poll());
+            iter.next().calculate_value(L);
         }
     }
 

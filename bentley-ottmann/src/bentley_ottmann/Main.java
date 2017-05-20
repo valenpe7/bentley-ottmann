@@ -21,11 +21,18 @@ public class Main {
         }
 
         BentleyOttmann test = new BentleyOttmann(data);
+
+        long t1 = System.currentTimeMillis();
         test.find_intersections();
+        long t2 = System.currentTimeMillis();
+
         //test.print_intersections();
         ArrayList<Point> intersections = test.get_intersections();
 
         new GUI(data, intersections);
+
+        System.out.println("number of intersections: " + intersections.size());
+        System.out.println("runtime: " + (t2 - t1) + " ms");
     }
 
     private static double rand(double range_min, double range_max) {
