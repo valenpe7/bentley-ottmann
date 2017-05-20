@@ -12,17 +12,20 @@ public class Event {
 
     private Point point;
     private ArrayList<Segment> segments;
+    private double value;
     private int type;
 
     Event(Point p, Segment s, int type) {
         this.point = p;
         this.segments = new ArrayList<>(Arrays.asList(s));
+        this.value = p.get_x_coord();
         this.type = type;
     }
 
     Event(Point p, ArrayList<Segment> s, int type) {
         this.point = p;
         this.segments = s;
+        this.value = p.get_x_coord();
         this.type = type;
     }
 
@@ -50,8 +53,12 @@ public class Event {
         return this.type;
     }
 
-    public double get_x_min() {
-        return this.point.get_x_coord();
+    public void set_value(double value) {
+        this.value = value;
+    }
+
+    public double get_value() {
+        return this.value;
     }
 
 }

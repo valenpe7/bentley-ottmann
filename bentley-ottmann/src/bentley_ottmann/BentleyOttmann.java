@@ -25,7 +25,7 @@ public class BentleyOttmann {
     public void find_intersections() {
         while(!this.Q.isEmpty()) {
             Event e = this.Q.poll();
-            double L = e.get_point().get_x_coord();
+            double L = e.get_value();
             switch(e.get_type()) {
             case 0:
                 for(Segment s : e.get_segments()) {
@@ -163,10 +163,10 @@ public class BentleyOttmann {
     private class event_comparator implements Comparator<Event> {
         @Override
         public int compare(Event e_1, Event e_2) {
-            if(e_1.get_x_min() > e_2.get_x_min()) {
+            if(e_1.get_value() > e_2.get_value()) {
                 return 1;
             }
-            if(e_1.get_x_min() < e_2.get_x_min()) {
+            if(e_1.get_value() < e_2.get_value()) {
                 return -1;
             }
             return 0;
