@@ -4,7 +4,7 @@ This program is part of the assessment work of the course "12RNA - Robust Numeri
 
 Java implementation of Bentley–Ottmann sweep line algorithm for listing all crossings in a set of line segments.
 
-The algorithm, as described by Bentley and Ottmann, assumes that 4 following conditions are satisfied:
+The algorithm, as described by Bentley and Ottmann, assumes that **4 following conditions are satisfied**:
 
 1. line segments are not vertical
 2. line segment endpoints do not lie on other line segments
