@@ -10,6 +10,8 @@ The algorithm, as described by Bentley and Ottmann, assumes that the **following
 2. No line segment endpoint lies upon another line segment
 3. No three line segments intersect at a single point.
 
+<img src="https://github.com/valenpe7/bentley-ottmann/raw/master/bentley-ottmann.gif" width="400" height="400">
+
 Find more about the algorithm here: https://en.wikipedia.org/wiki/Bentley%E2%80%93Ottmann_algorithm
 
 ---
