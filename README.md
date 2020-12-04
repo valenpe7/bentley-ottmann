@@ -1,4 +1,4 @@
-# bentley-ottmann
+# Implementation of Bentley-Ottmann Algorithm
 
 This program is part of the assessment work of the course "12RNA - Robust Numerical Algorithms" lectured at FNSPE CTU in Prague.
 
