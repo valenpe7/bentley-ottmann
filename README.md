@@ -8,7 +8,7 @@ The algorithm, as described by Bentley and Ottmann, assumes that the **following
 
 1. No two line segment endpoints or crossings have the same x-coordinate
 2. No line segment endpoint lies upon another line segment
-3. No three line segments intersect at a single point.
+3. No three line segments intersect at a single point
 
 <img src="https://github.com/valenpe7/bentley-ottmann/raw/master/bentley-ottmann.gif" width="400" height="400">
 
