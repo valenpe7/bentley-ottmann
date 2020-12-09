@@ -2,7 +2,7 @@
 
 This program is part of the assessment work of the course "12RNA - Robust Numerical Algorithms" lectured at FNSPE CTU in Prague.
 
-Java implementation of Bentley–Ottmann sweep line algorithm for listing all crossings in a set of line segments. The aplication contains a simple GUI.
+Java implementation of Bentley–Ottmann sweep line algorithm for listing all crossings in a set of line segments in 2D geometry. The aplication contains a simple GUI.
 
 The algorithm, as described by Bentley and Ottmann, assumes that the **following conditions are satisfied**:
 
